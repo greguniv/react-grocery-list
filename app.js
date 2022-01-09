@@ -26,7 +26,8 @@ const groceries = [
 ];
 // console.log(groceries)
 
-class App extends React.Component {
+class Container extends React.Component {
+
     state = {
         products: groceries,
         item: '',
@@ -37,19 +38,70 @@ class App extends React.Component {
         isPurchased: false,
     }
 
+    handleChange = (event) => {
+        this.setState({
+            [event.target.id]: event.target.value
+        })
+    }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        const newItem = {
+            item: this.state.item,
+            price: this.state.price,
+            quantity: this.state.quantity
+        }
+
+        console.log(newItem)
+
+        this.setState({
+            products: [newItem, ...this.state.products],
+            name: '',
+            price: 0,
+            quantity: ''
+        })
+    }
+
     render() {
-        return <h1>Hello, we're up and running!</h1>,
+        return (
             <div>
-                <ul>
-                    {
-                        this.state.products.map(item => {
-                            return (
-                                <li>{item.item} {item.quantity} {item.units}</li>
-                            )
-                        })
-                    }
-                </ul>
+                <div>
+                    <h1>Your Grocery List</h1>
+
+                    <form onSubmit={this.handleSubmit}>
+                        <label htmlFor='Item'>Item:</label>
+                        <input id='item' type='text' value={this.state.item} onChange={this.handleChange} />
+                        <label htmlFor='price'>Price:</label>
+                        <input id='price' type='text' value={this.state.price} onChange={this.handleChange} />
+                        <label htmlFor='quantity'>Quantity:</label>
+                        <input id='quantity' type='text' value={this.state.quantity} onChange={this.handleChange} />
+                        <input type='submit' />
+                    </form>
+                </div>
+
+                <div id="container">
+                    <div id="grocery-list">
+                        <ul>
+                            {
+                                this.state.products.map(item => {
+                                    return (
+                                        <li>{item.item} {item.units} {item.quantity}</li>
+                                    )
+                                })
+                            }
+                        </ul>
+                    </div>
+                </div>
             </div>
+        )
+    }
+}
+
+class App extends React.Component {
+    render() {
+        return (
+            <Container />
+        )
     }
 }
 

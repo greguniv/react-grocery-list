@@ -1,18 +1,24 @@
 * {
+    margin: 0;
     font-family: 'Moon Dance', cursive;
 }
 
-.container {
-    height: 85px;
-    width : 85px;
+h1 {
     display: flex;
-    flex-wrap: wrap;
-    background-color: gray;
+    text-decoration: underline;
+    justify-content: center;
+    background-color: lightblue;
 }
-    
-.container > div {
-    width : 100%;
+
+form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+ 
+#grocery-list {
+    display: flex;
+    justify-content: center;
+    background-color: pink;
 }
