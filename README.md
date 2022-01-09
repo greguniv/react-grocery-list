@@ -3,7 +3,7 @@
 
 ## Read over these specs and draw a mockup of your app
 
-Must have grocery items in this shape
+Must have grocery items in this shape:
 `{
   item: '',
   brand '',

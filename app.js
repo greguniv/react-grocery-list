@@ -13,7 +13,7 @@ const groceries = [
         units: '7.25 oz',
         quantity: 1,
         price: 0.55,
-        isPurchased: false,
+        isPurchased: true,
     },
     {
         item: 'Liquid Dishwashing Soap',
@@ -35,7 +35,7 @@ class Container extends React.Component {
         units: '',
         quantity: 0,
         price: 0,
-        isPurchased: false,
+        // isPurchased: true,
     }
 
     handleChange = (event) => {
@@ -48,7 +48,7 @@ class Container extends React.Component {
         e.preventDefault()
         const newItem = {
             item: this.state.item,
-            price: this.state.price,
+            units: this.state.units,
             quantity: this.state.quantity
         }
 
@@ -57,7 +57,7 @@ class Container extends React.Component {
         this.setState({
             products: [newItem, ...this.state.products],
             name: '',
-            price: 0,
+            units: '',
             quantity: ''
         })
     }
@@ -71,8 +71,8 @@ class Container extends React.Component {
                     <form onSubmit={this.handleSubmit}>
                         <label htmlFor='Item'>Item:</label>
                         <input id='item' type='text' value={this.state.item} onChange={this.handleChange} />
-                        <label htmlFor='price'>Price:</label>
-                        <input id='price' type='text' value={this.state.price} onChange={this.handleChange} />
+                        <label htmlFor='units'>Units:</label>
+                        <input id='units' type='text' value={this.state.units} onChange={this.handleChange} />
                         <label htmlFor='quantity'>Quantity:</label>
                         <input id='quantity' type='text' value={this.state.quantity} onChange={this.handleChange} />
                         <input type='submit' />
@@ -85,10 +85,17 @@ class Container extends React.Component {
                             {
                                 this.state.products.map(item => {
                                     return (
-                                        <li>{item.item} {item.units} {item.quantity}</li>
+                                        <div>
+                                            <li>{item.item} {item.units} {item.quantity}</li>
+                                            {/* {item.isPurchased
+                                                ? null
+                                                : <Container item={item} />
+                                            } */}
+                                        </div>
                                     )
                                 })
                             }
+
                         </ul>
                     </div>
                 </div>
