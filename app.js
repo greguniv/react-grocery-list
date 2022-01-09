@@ -35,7 +35,6 @@ class Container extends React.Component {
         units: '',
         quantity: '',
         price: 0,
-        isPurchased: true,
     }
 
     handleChange = (event) => {
@@ -66,7 +65,7 @@ class Container extends React.Component {
         return (
             <div>
                 <div>
-                    <h1>Your Grocery List</h1>
+                    <h1>Don't Forget to Get These!</h1>
 
                     <div id="form-submission">
                         <form onSubmit={this.handleSubmit}>
@@ -89,17 +88,22 @@ class Container extends React.Component {
                                     return (
                                         <div>
                                             <li>{item.item} {item.units} {item.quantity}</li>
-
-                                            {/* <div>
-                                            {item.isPurchased
-                                                ? null
-                                                : <Container item={item} />
-                                            }
-                                            </div> */}
                                         </div>
                                     )
                                 })
                             }
+
+                            {/* {
+                                this.state.products.map(item => {  
+                                    return(
+                                        <div>
+                                            {item.isPurchased 
+                                            ? !null 
+                                            : <Container item={item} />}
+                                        </div>
+                                    )}
+                                )
+                            } */}
 
                         </ul>
                     </div>
