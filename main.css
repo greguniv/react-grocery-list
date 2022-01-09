@@ -15,7 +15,14 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 200px;
+    border: 2px solid black;
+}
 
+#form-submission {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
  
 #grocery-list {

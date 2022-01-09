@@ -11,7 +11,7 @@ const groceries = [
         item: 'Mac n Cheese',
         brand: 'Kroger',
         units: '7.25 oz',
-        quantity: 1,
+        quantity: 3,
         price: 0.55,
         isPurchased: true,
     },
@@ -33,9 +33,9 @@ class Container extends React.Component {
         item: '',
         brand: '',
         units: '',
-        quantity: 0,
+        quantity: '',
         price: 0,
-        // isPurchased: true,
+        isPurchased: true,
     }
 
     handleChange = (event) => {
@@ -68,15 +68,17 @@ class Container extends React.Component {
                 <div>
                     <h1>Your Grocery List</h1>
 
-                    <form onSubmit={this.handleSubmit}>
-                        <label htmlFor='Item'>Item:</label>
-                        <input id='item' type='text' value={this.state.item} onChange={this.handleChange} />
-                        <label htmlFor='units'>Units:</label>
-                        <input id='units' type='text' value={this.state.units} onChange={this.handleChange} />
-                        <label htmlFor='quantity'>Quantity:</label>
-                        <input id='quantity' type='text' value={this.state.quantity} onChange={this.handleChange} />
-                        <input type='submit' />
-                    </form>
+                    <div id="form-submission">
+                        <form onSubmit={this.handleSubmit}>
+                            <label htmlFor='Item'>Item:</label>
+                            <input id='item' type='text' value={this.state.item} onChange={this.handleChange} />
+                            <label htmlFor='units'>Units:</label>
+                            <input id='units' type='text' value={this.state.units} onChange={this.handleChange} />
+                            <label htmlFor='quantity'>Quantity:</label>
+                            <input id='quantity' type='text' value={this.state.quantity} onChange={this.handleChange} />
+                            <input type='submit' />
+                        </form>
+                    </div>
                 </div>
 
                 <div id="container">
@@ -87,10 +89,13 @@ class Container extends React.Component {
                                     return (
                                         <div>
                                             <li>{item.item} {item.units} {item.quantity}</li>
-                                            {/* {item.isPurchased
+
+                                            {/* <div>
+                                            {item.isPurchased
                                                 ? null
                                                 : <Container item={item} />
-                                            } */}
+                                            }
+                                            </div> */}
                                         </div>
                                     )
                                 })
