@@ -23,6 +23,14 @@ const groceries = [
         price: 3.99,
         isPurchased: false,
     },
+    {
+        item: 'Dry Cat Food',
+        brand: 'IAMS',
+        units: '16 lb',
+        quantity: 2,
+        price: 25.99,
+        isPurchased: true,
+    }
 ];
 // console.log(groceries)
 
@@ -30,11 +38,6 @@ class Container extends React.Component {
 
     state = {
         products: groceries,
-        item: '',
-        brand: '',
-        units: '',
-        quantity: '',
-        price: 0,
     }
 
     handleChange = (event) => {
@@ -48,16 +51,14 @@ class Container extends React.Component {
         const newItem = {
             item: this.state.item,
             units: this.state.units,
-            quantity: this.state.quantity
+            quantity: this.state.quantity,
+            isPurchased: true,
         }
 
         console.log(newItem)
 
         this.setState({
-            products: [newItem, ...this.state.products],
-            name: '',
-            units: '',
-            quantity: ''
+            products: [newItem, ...this.state.products]
         })
     }
 
@@ -92,19 +93,21 @@ class Container extends React.Component {
                                     )
                                 })
                             }
-
-                            {/* {
-                                this.state.products.map(item => {  
-                                    return(
-                                        <div>
-                                            {item.isPurchased 
-                                            ? !null 
-                                            : <Container item={item} />}
-                                        </div>
-                                    )}
-                                )
-                            } */}
-
+                            <div id="purchased-items">
+                                {
+                                    this.state.products.map(groceries => {
+                                        return (
+                                            <p>{
+                                                groceries.isPurchased
+                                                    ? <p>We got this so far : 
+                                                        {groceries.item}</p>
+                                                    : null
+                                            }</p>
+                                        )
+                                    }
+                                    )
+                                }
+                            </div>
                         </ul>
                     </div>
                 </div>

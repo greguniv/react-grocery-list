@@ -30,3 +30,7 @@ form {
     justify-content: center;
     background-color: pink;
 }
+
+#purchased-items {
+    color: gray;
+}
