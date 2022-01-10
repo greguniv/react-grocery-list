@@ -99,7 +99,7 @@ class Container extends React.Component {
                                         return (
                                             <p>{
                                                 groceries.isPurchased
-                                                    ? <p>We got this so far : 
+                                                    ? <p>We purchased this so far : 
                                                         {groceries.item}</p>
                                                     : null
                                             }</p>
